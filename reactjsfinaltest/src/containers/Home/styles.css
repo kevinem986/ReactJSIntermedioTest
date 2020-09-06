@@ -1,0 +1,9 @@
+.container {
+  height: 100vh;
+}
+
+.header-wrapper {
+  height: 10vh;
+  display: flex;
+  border: 1px solid #fff;
+}
