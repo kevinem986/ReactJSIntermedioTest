@@ -1,20 +1,30 @@
 import React from "react";
-import "./styles.css";
-import { SearchField } from "../../components";
+import { SearchField, TableWeather, SearchHistory } from "../../components";
 import { Row, Col, Container } from "react-bootstrap";
+import { useWeatherData } from "../../utilities/hooks/use-weather-data";
 
 const Home = () => {
+  const { weatherData } = useWeatherData();
+  // const [data, setData] = useState({});
   return (
-    <Container>
+    <Container fluid={true}>
       <Row>
-        <Col md="12" xs="2" className="mx-auto">
-          <h2 styles="margin-right:auto">ReactJs Intermedio - Final Test</h2>{" "}
+        <Col md="12" xs="2" className="mx-auto text-center">
+          <span className="display-4">ReactJs Intermedio - Final Test</span>
         </Col>
       </Row>
       <Row>
-        <Col md="4" xs="2">
-          <span>Search By Country</span>
-          <SearchField placeholder="Search Weather Info By Country..." />
+        <Col md="2" xs="12" className="pt-4">
+          <SearchField
+            placeholder="Search..."
+            // setdata={(value) => setData(value)}
+          />
+        </Col>
+      </Row>
+      <Row>
+        <Col md="6" xs="12" className="pt-4">
+          <TableWeather weatherData={weatherData}></TableWeather>
+          <SearchHistory></SearchHistory>
         </Col>
       </Row>
     </Container>

@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
-import "./styles.css";
+import Form from "react-bootstrap/Form";
 import { Service } from "../../services";
+import { useWeatherData } from "../../utilities/hooks/use-weather-data";
 
+const countryList = [];
 const SearchField = (props) => {
   const service = new Service();
   const [country, setCountry] = useState("");
-  const [countryRecord, setCountryRecord] = useState("");
+  //   const [countryList, setCuntryList] = useState([]);
+  const { setWeatherData } = useWeatherData();
 
   useEffect(() => {
     const getData = async () => {
@@ -13,10 +16,11 @@ const SearchField = (props) => {
 
       if (country) {
         result = await service.getWeatherMapByCountry(country);
-        console.log(result);
         if (result.status === 200) {
           const data = result.data;
+
           const newCountry = {
+            country: data.name,
             temperature: data.main.temp,
             pressure: data.main.pressure,
             humidity: data.main.humidity,
@@ -25,30 +29,27 @@ const SearchField = (props) => {
             latitud: data.coord.lat,
             longitud: data.coord.lon,
           };
+          setWeatherData(newCountry);
 
-          setCountryRecord(newCountry);
+          countryList.push(newCountry);
+          if (countryList.length > 5) countryList.shift();
+
+          localStorage.setItem(
+            "countrySearchHistory",
+            JSON.stringify(countryList)
+          );
+          //   props.setdata(newCountry);
         }
       }
     };
-
     getData();
-
-    // const query = querystring.stringify({ search: value.trim() });
-    // let url = "/";
-
-    // if (value) {
-    //   url = `/?${query}`;
-    // }
-
-    // history.push(url);
   }, [country]);
 
   return (
-    <input
-      className="search-field"
-      onChange={(e) => setCountry(e.target.value)}
-      {...props}
-    />
+    <Form.Group>
+      <Form.Label className="font-weight-bold">Search By Country</Form.Label>
+      <Form.Control onChange={(e) => setCountry(e.target.value)} {...props} />
+    </Form.Group>
   );
 };
 

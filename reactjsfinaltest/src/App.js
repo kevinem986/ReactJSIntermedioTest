@@ -1,12 +1,12 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
 import Home from "./containers/Home";
+import { WeatherProvider } from "./utilities/hooks/use-weather-data";
 
 function App() {
   return (
-    <Switch>
-      <Route path="/" component={Home} />
-    </Switch>
+    <WeatherProvider>
+      <Home />
+    </WeatherProvider>
   );
 }
 
