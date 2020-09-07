@@ -1,5 +1,10 @@
 import React from "react";
-import { SearchField, TableWeather, SearchHistory } from "../../components";
+import {
+  SearchField,
+  TableWeather,
+  SearchHistory,
+  SearchCountryMap,
+} from "../../components";
 import { Row, Col, Container } from "react-bootstrap";
 import { useWeatherData } from "../../utilities/hooks/use-weather-data";
 
@@ -26,6 +31,13 @@ const Home = () => {
           <TableWeather weatherData={weatherData}></TableWeather>
           <SearchHistory></SearchHistory>
         </Col>
+      </Row>
+      <Row>
+        <SearchCountryMap
+          id="leafletmap"
+          weatherData={weatherData}
+          style={{ width: "100%", height: "800px" }}
+        ></SearchCountryMap>
       </Row>
     </Container>
   );

@@ -7,7 +7,6 @@ const countryList = [];
 const SearchField = (props) => {
   const service = new Service();
   const [country, setCountry] = useState("");
-  //   const [countryList, setCuntryList] = useState([]);
   const { setWeatherData } = useWeatherData();
 
   useEffect(() => {

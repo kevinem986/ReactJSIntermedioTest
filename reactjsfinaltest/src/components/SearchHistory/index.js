@@ -15,9 +15,21 @@ const SearchHistory = () => {
     setCountryHistory(getSearchHistory());
   }, [weatherData]);
 
-  const getData = (record) => {
+  const setHistoryData = (record) => {
     setWeatherData(record);
   };
+
+  const deleteHistoryData = (record) => {
+    const index = countryHistory.indexOf(record);
+    // localStorage.removeItem("countrySearchHistory");
+    console.log(index);
+    console.log(countryHistory);
+    countryHistory = countryHistory.splice(index, 1);
+    setCountryHistory(countryHistory);
+    console.log(countryHistory);
+    // setWeatherData(weatherData);
+  };
+
   return (
     <Form.Group>
       <Form.Label className="font-weight-bold">History</Form.Label>
@@ -33,24 +45,27 @@ const SearchHistory = () => {
           </tr>
         </thead>
         <tbody>
-          {countryHistory.map((l, i) => {
+          {countryHistory.map((data, i) => {
             return (
               <tr key={i}>
-                <td>{l.country}</td>
-                <td>{l.temperature}</td>
-                <td>{l.pressure}</td>
-                <td>{l.humidity}</td>
-                <td>{l.maxtemperature}</td>
-                <td>{l.mintemperature}</td>
+                <td>{data.country}</td>
+                <td>{data.temperature}</td>
+                <td>{data.pressure}</td>
+                <td>{data.humidity}</td>
+                <td>{data.maxtemperature}</td>
+                <td>{data.mintemperature}</td>
                 <td>
-                  <Button variant="outline-primary" onClick={() => getData(l)}>
+                  <Button
+                    variant="outline-primary"
+                    onClick={() => setHistoryData(data)}
+                  >
                     Select Country
                   </Button>
                 </td>
                 <td>
                   <Button
                     variant="outline-danger"
-                    // onClick={setSelectCountry(countryHistory[i])}
+                    onClick={() => deleteHistoryData(data)}
                   >
                     Delete Country
                   </Button>
