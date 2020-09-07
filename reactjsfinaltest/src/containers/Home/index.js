@@ -19,7 +19,7 @@ const Home = () => {
         </Col>
       </Row>
       <Row>
-        <Col md="2" xs="12" className="pt-4">
+        <Col md="4" xs="12" className="pt-4">
           <SearchField
             placeholder="Search..."
             // setdata={(value) => setData(value)}

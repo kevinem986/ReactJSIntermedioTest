@@ -9,6 +9,7 @@ const TableWeather = (props) => {
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>
+            <th>Country</th>
             <th>Temperature</th>
             <th>Pressure</th>
             <th>Humidity</th>
@@ -18,6 +19,7 @@ const TableWeather = (props) => {
         </thead>
         <tbody>
           <tr>
+            <td>{props.weatherData?.country}</td>
             <td>{props.weatherData?.temperature}</td>
             <td>{props.weatherData?.pressure}</td>
             <td>{props.weatherData?.humidity}</td>

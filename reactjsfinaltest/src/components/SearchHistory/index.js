@@ -21,13 +21,12 @@ const SearchHistory = () => {
 
   const deleteHistoryData = (record) => {
     const index = countryHistory.indexOf(record);
-    // localStorage.removeItem("countrySearchHistory");
-    console.log(index);
-    console.log(countryHistory);
-    countryHistory = countryHistory.splice(index, 1);
-    setCountryHistory(countryHistory);
-    console.log(countryHistory);
-    // setWeatherData(weatherData);
+    countryHistory.splice(index, 1);
+    setWeatherData(countryHistory);
+    localStorage.setItem(
+      "countrySearchHistory",
+      JSON.stringify(countryHistory)
+    );
   };
 
   return (

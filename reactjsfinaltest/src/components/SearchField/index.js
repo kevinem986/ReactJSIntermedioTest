@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Form from "react-bootstrap/Form";
 import { Service } from "../../services";
 import { useWeatherData } from "../../utilities/hooks/use-weather-data";
+import Form from "react-bootstrap/Form";
+import { Row, Col, Container } from "react-bootstrap";
+import InputGroup from "react-bootstrap/InputGroup";
+import Button from "react-bootstrap/Button";
 
 const countryList = [];
 const SearchField = (props) => {
@@ -44,11 +47,47 @@ const SearchField = (props) => {
     getData();
   }, [country]);
 
+  const searchCountry = async (e) => {
+    e.preventDefault();
+    const { country } = e.target.elements;
+    if (country.value) setCountry(country.value);
+  };
+
   return (
-    <Form.Group>
-      <Form.Label className="font-weight-bold">Search By Country</Form.Label>
-      <Form.Control onChange={(e) => setCountry(e.target.value)} {...props} />
-    </Form.Group>
+    <Container>
+      <Row>
+        <Col md="12" xs="12" className="mx-auto">
+          <Form onSubmit={searchCountry}>
+            <Form.Group>
+              <Form.Label className="font-weight-bold">
+                Search By Country
+              </Form.Label>
+              <InputGroup>
+                <Form.Control
+                  type="text"
+                  name="country"
+                  {...props}
+                ></Form.Control>
+                <InputGroup.Append>
+                  <Button type="input" variant="primary">
+                    Search Weather Info
+                  </Button>
+                </InputGroup.Append>
+              </InputGroup>
+              {/* <Form.Control
+                type="text"
+                name="country"
+                // onChange={(e) => setCountry(e.target.value)}
+                {...props}
+              /> */}
+              {/* <Button type="input" variant="primary">
+                Search Weather Info
+              </Button> */}
+            </Form.Group>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
