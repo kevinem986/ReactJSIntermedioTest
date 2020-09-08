@@ -39,7 +39,6 @@ const Home = () => {
           <SearchCountryMap
             // id="leafletmap"
             weatherData={weatherData}
-            // style={{ width: "100%", height: "800px" }}
           ></SearchCountryMap>
         </Col>
       </Row>

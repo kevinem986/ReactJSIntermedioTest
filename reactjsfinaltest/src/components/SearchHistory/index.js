@@ -34,7 +34,7 @@ const SearchHistory = () => {
       <Form.Label className="font-weight-bold h4">History</Form.Label>
       <Table striped bordered hover variant="dark">
         <thead>
-          <tr class="text-center">
+          <tr className="text-center">
             <th>Country</th>
             <th>Temperature</th>
             <th>Max Temperature</th>
@@ -45,36 +45,37 @@ const SearchHistory = () => {
           </tr>
         </thead>
         <tbody>
-          {countryHistory.map((data, i) => {
-            return (
-              <tr key={i}>
-                <td>{data.country}</td>
-                <td>{data.temperature}</td>
-                <td>{data.maxtemperature}</td>
-                <td>{data.mintemperature}</td>
-                <td>{data.pressure}</td>
-                <td>{data.humidity}</td>
-                <td class="text-center">
-                  <Button
-                    variant="outline-primary"
-                    onClick={() => setHistoryData(data)}
-                    className="btn btn-icon m-1"
-                    size="sm"
-                  >
-                    Select Country
-                  </Button>
-                  <Button
-                    variant="outline-danger"
-                    onClick={() => deleteHistoryData(data)}
-                    className="btn btn-icon m-1"
-                    size="sm"
-                  >
-                    Delete Country
-                  </Button>
-                </td>
-              </tr>
-            );
-          })}
+          {countryHistory &&
+            countryHistory.map((data, i) => {
+              return (
+                <tr key={i}>
+                  <td>{data.country}</td>
+                  <td>{data.temperature}</td>
+                  <td>{data.maxtemperature}</td>
+                  <td>{data.mintemperature}</td>
+                  <td>{data.pressure}</td>
+                  <td>{data.humidity}</td>
+                  <td className="text-center">
+                    <Button
+                      variant="outline-primary"
+                      onClick={() => setHistoryData(data)}
+                      className="btn btn-icon m-1"
+                      size="sm"
+                    >
+                      Select Country
+                    </Button>
+                    <Button
+                      variant="outline-danger"
+                      onClick={() => deleteHistoryData(data)}
+                      className="btn btn-icon m-1"
+                      size="sm"
+                    >
+                      Delete Country
+                    </Button>
+                  </td>
+                </tr>
+              );
+            })}
         </tbody>
       </Table>
     </Form.Group>

@@ -1,0 +1,4 @@
+.leaflet-container,
+.leaflet-tile-container {
+  width: 100% !important;
+}
