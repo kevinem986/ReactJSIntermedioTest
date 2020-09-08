@@ -8,7 +8,7 @@ export class Service {
     let res = null;
     try {
       res = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${country}&APPID=${openWeatherMapApiKey}`
+        `https://api.openweathermap.org/data/2.5/weather?q=${country}&APPID=${openWeatherMapApiKey}&units=metric`
       );
     } catch (err) {
       res = err.response;

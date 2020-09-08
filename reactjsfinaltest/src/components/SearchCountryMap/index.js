@@ -8,7 +8,7 @@ const SearchCountryMap = (props) => {
     props.weatherData?.longitud ?? -0.09,
   ];
   // let map = L.map("leafletmap").setView(position, 13);
-
+  console.log(position);
   return (
     <Map center={position} zoom={13}>
       <TileLayer

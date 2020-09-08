@@ -19,9 +19,9 @@ const Home = () => {
         </Col>
       </Row>
       <Row>
-        <Col md="4" xs="12" className="pt-4">
+        <Col md="4" xs="12" className="pt-4 mx-auto text-center">
           <SearchField
-            placeholder="Search..."
+            placeholder="Search By Country..."
             // setdata={(value) => setData(value)}
           />
         </Col>
@@ -29,15 +29,19 @@ const Home = () => {
       <Row>
         <Col md="6" xs="12" className="pt-4">
           <TableWeather weatherData={weatherData}></TableWeather>
+        </Col>
+        <Col md="6" xs="12" className="pt-4">
           <SearchHistory></SearchHistory>
         </Col>
       </Row>
       <Row>
-        <SearchCountryMap
-          id="leafletmap"
-          weatherData={weatherData}
-          style={{ width: "100%", height: "800px" }}
-        ></SearchCountryMap>
+        <Col md="12" xs="2" className="mx-auto text-center">
+          <SearchCountryMap
+            // id="leafletmap"
+            weatherData={weatherData}
+            // style={{ width: "100%", height: "800px" }}
+          ></SearchCountryMap>
+        </Col>
       </Row>
     </Container>
   );

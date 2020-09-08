@@ -31,16 +31,16 @@ const SearchHistory = () => {
 
   return (
     <Form.Group>
-      <Form.Label className="font-weight-bold">History</Form.Label>
+      <Form.Label className="font-weight-bold h4">History</Form.Label>
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>
             <th>Country</th>
             <th>Temperature</th>
-            <th>Pressure</th>
-            <th>Humidity</th>
             <th>Max Temperature</th>
             <th>Min Temperature</th>
+            <th>Pressure</th>
+            <th>Humidity</th>
           </tr>
         </thead>
         <tbody>
@@ -49,10 +49,10 @@ const SearchHistory = () => {
               <tr key={i}>
                 <td>{data.country}</td>
                 <td>{data.temperature}</td>
-                <td>{data.pressure}</td>
-                <td>{data.humidity}</td>
                 <td>{data.maxtemperature}</td>
                 <td>{data.mintemperature}</td>
+                <td>{data.pressure}</td>
+                <td>{data.humidity}</td>
                 <td>
                   <Button
                     variant="outline-primary"

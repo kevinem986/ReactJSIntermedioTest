@@ -23,11 +23,11 @@ const SearchField = (props) => {
 
           const newCountry = {
             country: data.name,
-            temperature: data.main.temp,
+            temperature: data.main.temp + " °C",
+            maxtemperature: data.main.temp_max + " °C",
+            mintemperature: data.main.temp_min + " °C",
             pressure: data.main.pressure,
-            humidity: data.main.humidity,
-            maxtemperature: data.main.temp_max,
-            mintemperature: data.main.temp_min,
+            humidity: data.main.humidity + " %",
             latitud: data.coord.lat,
             longitud: data.coord.lon,
           };
@@ -59,8 +59,8 @@ const SearchField = (props) => {
         <Col md="12" xs="12" className="mx-auto">
           <Form onSubmit={searchCountry}>
             <Form.Group>
-              <Form.Label className="font-weight-bold">
-                Search By Country
+              <Form.Label className="font-weight-bold h3">
+                Weather Application
               </Form.Label>
               <InputGroup>
                 <Form.Control
