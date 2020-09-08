@@ -34,13 +34,14 @@ const SearchHistory = () => {
       <Form.Label className="font-weight-bold h4">History</Form.Label>
       <Table striped bordered hover variant="dark">
         <thead>
-          <tr>
+          <tr class="text-center">
             <th>Country</th>
             <th>Temperature</th>
             <th>Max Temperature</th>
             <th>Min Temperature</th>
             <th>Pressure</th>
             <th>Humidity</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -53,18 +54,20 @@ const SearchHistory = () => {
                 <td>{data.mintemperature}</td>
                 <td>{data.pressure}</td>
                 <td>{data.humidity}</td>
-                <td>
+                <td class="text-center">
                   <Button
                     variant="outline-primary"
                     onClick={() => setHistoryData(data)}
+                    className="btn btn-icon m-1"
+                    size="sm"
                   >
                     Select Country
                   </Button>
-                </td>
-                <td>
                   <Button
                     variant="outline-danger"
                     onClick={() => deleteHistoryData(data)}
+                    className="btn btn-icon m-1"
+                    size="sm"
                   >
                     Delete Country
                   </Button>
